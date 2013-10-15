@@ -5,7 +5,14 @@ module Envconfig
 
     envconfig = Envconfig.load(ENV)
 
-    config.action_mailer.smtp_settings = envconfig.smtp.to_h
+    initializer "envconfig.smtp" do |app|
+      envconfig_log "Using #{envconfig.smtp.provider.name} for SMTP"
+      app.config.action_mailer.smtp_settings = envconfig.smtp.to_h
+    end
+
+    def envconfig_log(message)
+      Rails.logger.info("Envconfig: #{message}")
+    end
 
   end
 end
