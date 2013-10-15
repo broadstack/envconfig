@@ -81,12 +81,9 @@ describe "SMTP configuration" do
     it "has port 2525" do
       expect(config[:port]).to eq("2525")
     end
-    it "has nil for other values" do
+    it "only has port 2525" do
       expect(config.to_h).to eq(
-        address: nil,
         port: "2525",
-        user_name: nil,
-        password: nil,
       )
     end
   end

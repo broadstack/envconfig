@@ -51,7 +51,7 @@ module Envconfig
 
     def dynamic
       mapping.inject({}) do |result, (result_key, env_key)|
-        result[result_key] = env[env_key]
+        result[result_key] = env[env_key] if env.key?(env_key)
         result
       end
     end
