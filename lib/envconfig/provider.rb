@@ -38,15 +38,19 @@ module Envconfig
 
     # The configuration derived from the environment for this provider.
     def config
-      mapping.inject({}) do |result, (result_key, env_key)|
-        result[result_key] = env[env_key]
-        result
-      end.merge(static)
+      static.merge(dynamic)
     end
 
     private
 
     attr_reader :env
+
+    def dynamic
+      mapping.inject({}) do |result, (result_key, env_key)|
+        result[result_key] = env[env_key]
+        result
+      end
+    end
 
     class NullProvider
       def config; {} end
