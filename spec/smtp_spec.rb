@@ -3,10 +3,17 @@ require "spec_helper"
 describe "SMTP configuration" do
 
   let(:env) { {} }
-  let(:config) { Envconfig.from(env).smtp }
+  subject(:config) { Envconfig.from(env).smtp }
 
   context "with nothing relevant in ENV" do
-    pending
+    it "returns nil for keys" do
+      %i{address port username password}.each do |k|
+        expect(config[k]).to eq(nil)
+      end
+    end
+    it "responds to #to_h with empty hash" do
+      expect(config.to_h).to eq({})
+    end
   end
 
   context "with Postmark in ENV" do

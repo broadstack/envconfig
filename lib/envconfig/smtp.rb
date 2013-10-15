@@ -14,8 +14,7 @@ module Envconfig
     class Custom
       include Provider
       def valid?
-        # Use #any? instead of #all? for this provider.
-        mapping.values.any? { |k| env.key?(k) }
+        mapping.values.any? { |k| env.key?(k) } #any? instead of #all?
       end
       def mapping
         {
