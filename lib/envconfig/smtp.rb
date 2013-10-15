@@ -39,7 +39,7 @@ module Envconfig
       def static
         {
           address: "smtp.mandrillapp.com",
-          port: "25",
+          port: "587",
         }
       end
     end
