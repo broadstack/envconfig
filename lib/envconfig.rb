@@ -16,7 +16,11 @@ module Envconfig
     end
 
     def smtp
-      ::Envconfig::Smtp.new(@env)
+      @_smtp ||= ::Envconfig::Smtp.new(@env)
+    end
+
+    def smtp?
+      smtp.to_h.any?
     end
 
   end
