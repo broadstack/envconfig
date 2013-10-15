@@ -1,5 +1,13 @@
+require "envconfig/abstract_provider"
+require "envconfig/provider_resolver"
+require "envconfig/root"
+require "envconfig/smtp"
 require "envconfig/version"
 
 module Envconfig
-  # Your code goes here...
+
+  def self.from(env)
+    ::Envconfig::Root.new(env)
+  end
+
 end
