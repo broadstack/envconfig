@@ -34,6 +34,7 @@ And `ActionMailer` will be auto-configured accordingly.
 Add `gem "envconfig"` to your Gemfile and run `bundle`,
 or `gem install envconfig`.
 
+[![Build Status](https://travis-ci.org/broadstack/envconfig.png?branch=master)](https://travis-ci.org/broadstack/envconfig)
 
 ## Usage
 
