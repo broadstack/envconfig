@@ -24,7 +24,7 @@ module Envconfig
     end
 
     def provider
-      ProviderResolver.new(env, self.class.providers).provider
+      Provider.find(env, self.class.providers)
     end
 
   end

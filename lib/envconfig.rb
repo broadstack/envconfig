@@ -1,5 +1,4 @@
 require "envconfig/provider"
-require "envconfig/provider_resolver"
 require "envconfig/root"
 require "envconfig/service"
 require "envconfig/smtp"

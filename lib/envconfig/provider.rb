@@ -1,6 +1,11 @@
 module Envconfig
   module Provider
 
+    def self.find(env, providers)
+      providers.map { |k| k.new(env) }.detect(&:valid?) ||
+        NullProvider.new
+    end
+
     def initialize(env)
       @env = env
     end
@@ -36,6 +41,10 @@ module Envconfig
     private
 
     attr_reader :env
+
+    class NullProvider
+      def config; {} end
+    end
 
   end
 end

@@ -1,13 +1,13 @@
 require "spec_helper"
 
 module Envconfig
-  describe ProviderResolver do
+  describe "finding a provider" do
 
     let(:env) { {} }
     let(:providers) { [] }
 
     subject(:provider) do
-      ProviderResolver.new(env, providers).provider
+      Provider.find(env, providers)
     end
 
     context "with assorted providers" do
