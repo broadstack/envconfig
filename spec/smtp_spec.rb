@@ -16,6 +16,21 @@ describe "SMTP configuration" do
     end
   end
 
+  context "with Mandrill in ENV" do
+    before {
+      env["MANDRILL_USERNAME"] = "mandrilluser"
+      env["MANDRILL_APIKEY"] = "mandrillkey"
+    }
+    it "sets address, port, username, password" do
+      expect(config.to_h).to eq(
+        address: "smtp.mandrillapp.com",
+        port: "25",
+        username: "mandrilluser",
+        password: "mandrillkey",
+      )
+    end
+  end
+
   context "with Postmark in ENV" do
     before {
       env["POSTMARK_SMTP_SERVER"] = "postmark.example.org"

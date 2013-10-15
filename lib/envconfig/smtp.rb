@@ -6,6 +6,7 @@ module Envconfig
     def self.providers
       [
         Custom,
+        Mandrill,
         Postmark,
       ]
     end
@@ -22,6 +23,22 @@ module Envconfig
           port: "SMTP_PORT",
           username: "SMTP_USERNAME",
           password: "SMTP_PASSWORD",
+        }
+      end
+    end
+
+    class Mandrill
+      include Provider
+      def mapping
+        {
+          username: "MANDRILL_USERNAME",
+          password: "MANDRILL_APIKEY",
+        }
+      end
+      def static
+        {
+          address: "smtp.mandrillapp.com",
+          port: "25",
         }
       end
     end
