@@ -26,6 +26,10 @@ module Envconfig
       {}
     end
 
+    def name
+      self.class.name.split("::").last
+    end
+
     # Whether the environment is valid for this provider.
     def valid?
       env_keys.all? { |k| env.key?(k) }
@@ -54,6 +58,7 @@ module Envconfig
 
     class NullProvider
       def config; {} end
+      def name; nil; end
     end
 
   end

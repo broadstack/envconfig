@@ -63,6 +63,7 @@ module Envconfig
 
     class Sendgrid
       include Provider
+      def name; "SendGrid" end
       def mapping
         {
           user_name: "SENDGRID_USERNAME",

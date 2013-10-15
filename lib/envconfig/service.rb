@@ -15,16 +15,16 @@ module Envconfig
       config[key]
     end
 
+    def provider
+      @_provider ||= Provider.find(env, self.class.providers)
+    end
+
     private
 
     attr_reader :env
 
     def config
       @_config ||= provider.config
-    end
-
-    def provider
-      Provider.find(env, self.class.providers)
     end
 
   end

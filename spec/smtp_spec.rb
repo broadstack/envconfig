@@ -14,6 +14,9 @@ describe "SMTP configuration" do
     it "responds to #to_h with empty hash" do
       expect(config.to_h).to eq({})
     end
+    it "has nil provider name" do
+      expect(config.provider.name).to eq(nil)
+    end
   end
 
   context "with Mandrill in ENV" do
@@ -28,6 +31,9 @@ describe "SMTP configuration" do
         user_name: "mandrilluser",
         password: "mandrillkey",
       )
+    end
+    it "identifies as Mandrill" do
+      expect(config.provider.name).to eq("Mandrill")
     end
   end
 
@@ -45,6 +51,9 @@ describe "SMTP configuration" do
         authentication: :plain,
       )
     end
+    it "identifies as Postmark" do
+      expect(config.provider.name).to eq("Postmark")
+    end
   end
 
   context "with SendGrid in ENV" do
@@ -61,6 +70,9 @@ describe "SMTP configuration" do
         authentication: :plain,
         enable_starttls_auto: true
       )
+    end
+    it "identifies as SendGrid" do
+      expect(config.provider.name).to eq("SendGrid")
     end
   end
 
