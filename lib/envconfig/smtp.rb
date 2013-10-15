@@ -35,6 +35,12 @@ module Envconfig
           password: "POSTMARK_API_KEY",
         }
       end
+      def static
+        {
+          port: "25",
+          authentication: :plain,
+        }
+      end
     end
 
   end

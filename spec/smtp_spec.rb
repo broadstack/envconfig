@@ -26,6 +26,8 @@ describe "SMTP configuration" do
         address: "postmark.example.org",
         username: "b6ebafbec9a31661f6247f21ff4a68d9",
         password: "b6ebafbec9a31661f6247f21ff4a68d9",
+        port: "25",
+        authentication: :plain,
       )
     end
   end
