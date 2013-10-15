@@ -1,7 +1,7 @@
 module Envconfig
 
   # The root configuration accessor.
-  # Gives access to various services e.g. root.smtp[:username]
+  # Gives access to various services e.g. root.smtp[:user_name]
   class Root
 
     def initialize(env)

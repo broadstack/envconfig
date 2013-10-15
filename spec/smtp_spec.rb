@@ -7,7 +7,7 @@ describe "SMTP configuration" do
 
   context "with nothing relevant in ENV" do
     it "returns nil for keys" do
-      %i{address port username password}.each do |k|
+      %i{address port user_name password}.each do |k|
         expect(config[k]).to eq(nil)
       end
     end
@@ -21,11 +21,11 @@ describe "SMTP configuration" do
       env["MANDRILL_USERNAME"] = "mandrilluser"
       env["MANDRILL_APIKEY"] = "mandrillkey"
     }
-    it "sets address, port, username, password" do
+    it "sets address, port, user_name, password" do
       expect(config.to_h).to eq(
         address: "smtp.mandrillapp.com",
         port: "25",
-        username: "mandrilluser",
+        user_name: "mandrilluser",
         password: "mandrillkey",
       )
     end
@@ -36,10 +36,10 @@ describe "SMTP configuration" do
       env["POSTMARK_SMTP_SERVER"] = "postmark.example.org"
       env["POSTMARK_API_KEY"] = "b6ebafbec9a31661f6247f21ff4a68d9"
     }
-    it "sets address, username, password" do
+    it "sets address, user_name, password" do
       expect(config.to_h).to eq(
         address: "postmark.example.org",
-        username: "b6ebafbec9a31661f6247f21ff4a68d9",
+        user_name: "b6ebafbec9a31661f6247f21ff4a68d9",
         password: "b6ebafbec9a31661f6247f21ff4a68d9",
         port: "25",
         authentication: :plain,
@@ -52,9 +52,9 @@ describe "SMTP configuration" do
       env["SENDGRID_USERNAME"] = "sendgriduser"
       env["SENDGRID_PASSWORD"] = "sendgridpassword"
     }
-    it "sets address, username, password" do
+    it "sets address, user_name, password" do
       expect(config.to_h).to eq(
-        username: "sendgriduser",
+        user_name: "sendgriduser",
         password: "sendgridpassword",
         address: "smtp.sendgrid.net",
         port: "587",
@@ -73,7 +73,7 @@ describe "SMTP configuration" do
       expect(config.to_h).to eq(
         address: nil,
         port: "2525",
-        username: nil,
+        user_name: nil,
         password: nil,
       )
     end

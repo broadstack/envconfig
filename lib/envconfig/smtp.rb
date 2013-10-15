@@ -22,7 +22,7 @@ module Envconfig
         {
           address: "SMTP_HOST",
           port: "SMTP_PORT",
-          username: "SMTP_USERNAME",
+          user_name: "SMTP_USERNAME",
           password: "SMTP_PASSWORD",
         }
       end
@@ -32,7 +32,7 @@ module Envconfig
       include Provider
       def mapping
         {
-          username: "MANDRILL_USERNAME",
+          user_name: "MANDRILL_USERNAME",
           password: "MANDRILL_APIKEY",
         }
       end
@@ -49,7 +49,7 @@ module Envconfig
       def mapping
         {
           address: "POSTMARK_SMTP_SERVER",
-          username: "POSTMARK_API_KEY",
+          user_name: "POSTMARK_API_KEY",
           password: "POSTMARK_API_KEY",
         }
       end
@@ -65,7 +65,7 @@ module Envconfig
       include Provider
       def mapping
         {
-          username: "SENDGRID_USERNAME",
+          user_name: "SENDGRID_USERNAME",
           password: "SENDGRID_PASSWORD",
         }
       end
