@@ -4,8 +4,8 @@ Connect your Rails app to backing services via ENV vars such as those
 provided by [Broadstack][broadstack] or [Heroku Addons][heroku_addons].
 
 envconfig gathers ENV configuration from known add-on providers, exposes them
-as a consistent configuration interface, and providers initializers to configure
-your Rails application.
+as a consistent configuration interface, and configures your Rails application
+via initializers.
 
 For example if your ENV contains the follow:
 
