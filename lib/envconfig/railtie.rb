@@ -6,8 +6,12 @@ module Envconfig
     envconfig = Envconfig.load(ENV)
 
     initializer "envconfig.smtp" do |app|
-      envconfig_log "Using #{envconfig.smtp.provider.name} for SMTP"
-      app.config.action_mailer.smtp_settings = envconfig.smtp.to_h
+      if envconfig.smtp?
+        envconfig_log "Using #{envconfig.smtp.provider.name} for SMTP"
+        app.config.action_mailer.smtp_settings = envconfig.smtp.to_h
+      else
+        envconfig_log "SMTP not configured"
+      end
     end
 
     def envconfig_log(message)
