@@ -3,7 +3,7 @@ require "spec_helper"
 describe "SMTP configuration" do
 
   let(:env) { {} }
-  subject(:config) { Envconfig.from(env).smtp }
+  subject(:config) { Envconfig.load(env).smtp }
 
   context "with nothing relevant in ENV" do
     it "returns nil for keys" do

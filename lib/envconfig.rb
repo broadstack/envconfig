@@ -5,7 +5,7 @@ require "envconfig/version"
 
 module Envconfig
 
-  def self.from(env)
+  def self.load(env)
     Root.new(env)
   end
 

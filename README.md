@@ -17,7 +17,7 @@ POSTMARK_API_KEY="bcca0a78abbaed6533f3c8017b804bda"
 Then envconfig's SMTP configuration will look like this:
 
 ```ruby
-Envconfig.for(ENV).smtp.to_h # =>
+Envconfig.load(ENV).smtp.to_h # =>
 {
   "address" => "smtp.example.org",
   "port" => 25,
