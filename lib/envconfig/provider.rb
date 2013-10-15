@@ -20,6 +20,12 @@ module Envconfig
       raise "Mapping must be implemented by subclass."
     end
 
+    # Static configuration which doesn't vary by environment.
+    # e.g. hostname / port.
+    def static
+      {}
+    end
+
     # Whether the environment is valid for this provider.
     def valid?
       env_keys.all? { |k| env.key?(k) }
@@ -35,7 +41,7 @@ module Envconfig
       mapping.inject({}) do |result, (result_key, env_key)|
         result[result_key] = env[env_key]
         result
-      end
+      end.merge(static)
     end
 
     private
