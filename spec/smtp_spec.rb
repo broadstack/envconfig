@@ -47,6 +47,23 @@ describe "SMTP configuration" do
     end
   end
 
+  context "with SendGrid in ENV" do
+    before {
+      env["SENDGRID_USERNAME"] = "sendgriduser"
+      env["SENDGRID_PASSWORD"] = "sendgridpassword"
+    }
+    it "sets address, username, password" do
+      expect(config.to_h).to eq(
+        username: "sendgriduser",
+        password: "sendgridpassword",
+        address: "smtp.sendgrid.net",
+        port: "587",
+        authentication: :plain,
+        enable_starttls_auto: true
+      )
+    end
+  end
+
   context "with only SMTP_PORT=2525 in env" do
     before { env["SMTP_PORT"] = "2525" }
     it "has port 2525" do

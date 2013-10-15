@@ -8,6 +8,7 @@ module Envconfig
         Custom,
         Mandrill,
         Postmark,
+        Sendgrid,
       ]
     end
 
@@ -56,6 +57,24 @@ module Envconfig
         {
           port: "25",
           authentication: :plain,
+        }
+      end
+    end
+
+    class Sendgrid
+      include Provider
+      def mapping
+        {
+          username: "SENDGRID_USERNAME",
+          password: "SENDGRID_PASSWORD",
+        }
+      end
+      def static
+        {
+          address: "smtp.sendgrid.net",
+          port: "587",
+          authentication: :plain,
+          enable_starttls_auto: true
         }
       end
     end
