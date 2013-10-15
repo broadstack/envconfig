@@ -14,7 +14,7 @@ describe Envconfig::Root do
     end
 
     describe "#smtp" do
-      %i{to_h provider []}.each do |m|
+      [:to_h, :provider, :[]].each do |m|
         it "responds to :#{m}" do
           expect(root.smtp.respond_to?(m)).to eq(true)
         end

@@ -7,7 +7,7 @@ describe "SMTP configuration" do
 
   context "with nothing relevant in ENV" do
     it "returns nil for keys" do
-      %i{address port user_name password}.each do |k|
+      [:address, :port, :user_name, :password].each do |k|
         expect(config[k]).to eq(nil)
       end
     end
