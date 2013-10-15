@@ -8,10 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = Envconfig::VERSION
   spec.authors       = ["Paul Annesley"]
   spec.email         = ["paul@annesley.cc"]
-  spec.description   = %q{Connect your app to backing services via Broadstack/Heroku-style ENV vars.}
-  spec.summary       = %q{envconfig gathers ENV configuration from known add-on providers, exposes them as a consistent configuration interface, and configures your Rails application via initializers.
-
-}
+  spec.summary       = %q{Connect your app to backing services via Broadstack/Heroku-style ENV vars.}
   spec.homepage      = "https://github.com/broadstack/envconfig"
   spec.license       = "MIT"
 
