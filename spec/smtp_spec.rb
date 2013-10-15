@@ -25,4 +25,19 @@ describe "SMTP configuration" do
     end
   end
 
+  context "with only SMTP_PORT=2525 in env" do
+    before { env["SMTP_PORT"] = "2525" }
+    it "has port 2525" do
+      expect(config[:port]).to eq("2525")
+    end
+    it "has nil for other values" do
+      expect(config.to_h).to eq(
+        address: nil,
+        port: "2525",
+        username: nil,
+        password: nil,
+      )
+    end
+  end
+
 end

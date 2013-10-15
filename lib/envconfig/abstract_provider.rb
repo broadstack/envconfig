@@ -9,9 +9,24 @@ module Envconfig
       @env = env
     end
 
+    # A mapping of configuration keys to environment keys.
+    # e.g.
+    # {
+    #   address: "PROVIDER_HOSTNAME",
+    #   password: "PROVIDER_API_KEY",
+    # }
+    def mapping
+      raise "Mapping must be implemented by subclass."
+    end
+
     # Whether the environment is valid for this provider.
     def valid?
-      mapping.values.all? { |env_key| env.key?(env_key) }
+      env_keys.all? { |k| env.key?(k) }
+    end
+
+    # Which ENV keys are used by this provider.
+    def env_keys
+      mapping.values
     end
 
     # The configuration derived from the environment for this provider.
@@ -25,16 +40,6 @@ module Envconfig
     private
 
     attr_reader :env
-
-    # A mapping of configuration keys to environment keys.
-    # e.g.
-    # {
-    #   address: "PROVIDER_HOSTNAME",
-    #   password: "PROVIDER_API_KEY",
-    # }
-    def mapping
-      raise "Mapping must be implemented by subclass."
-    end
 
   end
 
