@@ -1,35 +1,13 @@
 module Envconfig
   class Smtp
 
+    include Service
+
     def self.providers
       [
         Custom,
         Postmark,
       ]
-    end
-
-    def initialize(env)
-      @env = env
-    end
-
-    def to_h
-      config
-    end
-
-    def [](key)
-      config[key]
-    end
-
-    private
-
-    attr_reader :env
-
-    def config
-      @_config ||= provider.config
-    end
-
-    def provider
-      ProviderResolver.new(env, self.class.providers).provider
     end
 
     # A custom configuration, for local or self-managed SMTP servers.
