@@ -43,6 +43,16 @@ If you're not using Rails, add the base `envconfig` gem, and access the
 normalized configuration directly.
 
 
+## Supported Add-ons
+
+### SMTP
+
+* Postmark ([Broadstack](https://broadstack.com/addons/postmark), [Heroku](https://addons.heroku.com/postmark))
+* Mandrill ([Heroku](https://addons.heroku.com/mandrill))
+* SendGrid ([Heroku](https://addons.heroku.com/sendgrid))
+* Custom (`SMTP_HOST`, `SMTP_PORT`, `SMTP_USERNAME`, `SMTP_PASSWORD` in `ENV`)
+
+
 ## Contributing
 
 1. Fork it
