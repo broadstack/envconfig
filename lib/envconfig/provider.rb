@@ -1,9 +1,5 @@
 module Envconfig
-
-  # An abstract (partial) provider implementation which, given
-  # a mapping of config keys to environment variable names,
-  # can determine whether the environment is valid and derive a config.
-  class AbstractProvider
+  module Provider
 
     def initialize(env)
       @env = env
@@ -42,5 +38,4 @@ module Envconfig
     attr_reader :env
 
   end
-
 end

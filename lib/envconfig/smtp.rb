@@ -11,7 +11,8 @@ module Envconfig
     end
 
     # A custom configuration, for local or self-managed SMTP servers.
-    class Custom < AbstractProvider
+    class Custom
+      include Provider
       def valid?
         # Use #any? instead of #all? for this provider.
         mapping.values.any? { |k| env.key?(k) }
@@ -26,7 +27,8 @@ module Envconfig
       end
     end
 
-    class Postmark < AbstractProvider
+    class Postmark
+      include Provider
       def mapping
         {
           address: "POSTMARK_SMTP_SERVER",
