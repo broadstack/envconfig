@@ -57,6 +57,7 @@ Envconfig.load.smtp.to_h  # => {address: "example.org", ...}
 * Postmark ([Broadstack](https://broadstack.com/addons/postmark), [Heroku](https://addons.heroku.com/postmark))
 * Mandrill ([Heroku](https://addons.heroku.com/mandrill))
 * SendGrid ([Heroku](https://addons.heroku.com/sendgrid))
+* Mailgun ([Heroku](https://address.Heroku.com/mailgun))
 * Custom (`SMTP_HOST`, `SMTP_PORT`, `SMTP_USERNAME`, `SMTP_PASSWORD` in `ENV`)
 
 SMTP example:

@@ -9,6 +9,26 @@ describe "SMTP configuration" do
     it_behaves_like "empty configuration"
   end
 
+  context "with Mailgun in ENV" do
+    before do
+      env['MAILGUN_SMTP_PORT'] = 2468
+      env['MAILGUN_SMTP_SERVER'] = "mailgun.example.org"
+      env['MAILGUN_SMTP_LOGIN'] = "mailgunuser"
+      env['MAILGUN_SMTP_PASSWORD'] = "a493216c9ced751d6bc38fd6f5c3930b"
+    end
+    it "identifies as Mailgun" do
+      expect(config.provider.name).to eq("Mailgun")
+    end
+    it "sets port, address, user_name, password" do
+      expect(config.to_h).to eq(
+        address: "mailgun.example.org",
+        port: 2468,
+        user_name: "mailgunuser",
+        password: "a493216c9ced751d6bc38fd6f5c3930b",
+      )
+    end
+  end
+
   context "with Mandrill in ENV" do
     before {
       env["MANDRILL_USERNAME"] = "mandrilluser"

@@ -6,6 +6,7 @@ module Envconfig
     def self.providers
       [
         Custom,
+        Mailgun,
         Mandrill,
         Postmark,
         Sendgrid,
@@ -24,6 +25,18 @@ module Envconfig
           port: "SMTP_PORT",
           user_name: "SMTP_USERNAME",
           password: "SMTP_PASSWORD",
+        }
+      end
+    end
+
+    class Mailgun
+      include Provider
+      def mapping
+        {
+          port: "MAILGUN_SMTP_PORT",
+          address: "MAILGUN_SMTP_SERVER",
+          user_name: "MAILGUN_SMTP_LOGIN",
+          password: "MAILGUN_SMTP_PASSWORD",
         }
       end
     end
