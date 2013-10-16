@@ -1,5 +1,6 @@
 require "envconfig/service"
 require "envconfig/provider"
+require "envconfig/url_parser"
 
 require "envconfig/memcached"
 require "envconfig/redis"

@@ -18,19 +18,8 @@ module Envconfig
         {url: "OPENREDIS_URL"}
       end
       def filter_config(config)
-        config.merge!(
-          parts_from_url(config[:url])
-        )
-      end
-
-      def parts_from_url(url)
-        url = URI.parse(url)
-        {
-          host: url.host,
-          port: url.port,
-          user: url.user,
-          password: url.password,
-        }
+        url = UrlParser.new(config[:url])
+        config.merge!(url.extract(:host, :port, :user, :password))
       end
     end
 
