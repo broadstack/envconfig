@@ -27,7 +27,7 @@ describe "SMTP configuration" do
     it "sets address, port, user_name, password" do
       expect(config.to_h).to eq(
         address: "smtp.mandrillapp.com",
-        port: "25",
+        port: "587",
         user_name: "mandrilluser",
         password: "mandrillkey",
       )
