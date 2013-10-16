@@ -38,6 +38,17 @@ describe Envconfig::Root do
       end
     end
 
+    describe "#to_h" do
+      it "returns a nested hash of all configuration" do
+        expect(root.to_h).to eq(
+          database: {},
+          memcached: {},
+          redis: {},
+          smtp: {},
+        )
+      end
+    end
+
   end
 
 end

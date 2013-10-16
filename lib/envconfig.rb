@@ -22,6 +22,17 @@ module Envconfig
       @_services = {}
     end
 
+    def to_h
+      [
+        :database,
+        :memcached,
+        :redis,
+        :smtp,
+      ].inject({}) do |hash, service|
+        hash.merge!(service => public_send(service).to_h)
+      end
+    end
+
     def database
       service_for(:database, Database)
     end
