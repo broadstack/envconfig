@@ -19,10 +19,11 @@ module Envconfig
 
     def initialize(env)
       @env = env
+      @_services = {}
     end
 
     def database
-      @_database ||= ::Envconfig::Database.new(@env)
+      service_for(:database, Database)
     end
 
     def database?
@@ -30,7 +31,7 @@ module Envconfig
     end
 
     def memcached
-      @_memcached ||= ::Envconfig::Memcached.new(@env)
+      service_for(:memcached, Memcached)
     end
 
     def memcached?
@@ -38,7 +39,7 @@ module Envconfig
     end
 
     def redis
-      @_redis ||= ::Envconfig::Redis.new(@env)
+      service_for(:redis, Redis)
     end
 
     def redis?
@@ -46,7 +47,7 @@ module Envconfig
     end
 
     def smtp
-      @_smtp ||= ::Envconfig::Smtp.new(@env)
+      service_for(:smtp, Smtp)
     end
 
     def smtp?
@@ -54,6 +55,10 @@ module Envconfig
     end
 
     private
+
+    def service_for(name, klass)
+      @_services[name] || klass.new(@env)
+    end
 
     def predicate_for(name)
       public_send(name).to_h.any?
