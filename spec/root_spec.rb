@@ -71,6 +71,18 @@ describe Envconfig::Root do
         "POSTMARK_API_KEY" => "pmkey",
       }
     end
+
+    {
+      database: "Generic",
+      memcached: "MemCachier",
+      redis: "openredis",
+      smtp: "Postmark"
+    }.each do |service, name|
+      it "configures #{service} with #{name}" do
+        expect(root.public_send(service).provider.name).to eq(name)
+      end
+    end
+
     it "has a giant #to_h" do
       expect(root.to_h).to eq(
         database: {
@@ -104,6 +116,7 @@ describe Envconfig::Root do
         }
       )
     end
+
   end
 
 end
