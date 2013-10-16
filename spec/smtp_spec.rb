@@ -6,17 +6,7 @@ describe "SMTP configuration" do
   subject(:config) { Envconfig.load(env).smtp }
 
   context "with nothing relevant in ENV" do
-    it "returns nil for keys" do
-      [:address, :port, :user_name, :password].each do |k|
-        expect(config[k]).to eq(nil)
-      end
-    end
-    it "responds to #to_h with empty hash" do
-      expect(config.to_h).to eq({})
-    end
-    it "has nil provider name" do
-      expect(config.provider.name).to eq(nil)
-    end
+    it_behaves_like "empty configuration"
   end
 
   context "with Mandrill in ENV" do
