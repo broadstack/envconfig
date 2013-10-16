@@ -98,6 +98,7 @@ Envconfig.load.memcached.to_h # =>
 ### Redis
 
 * openredis ([Heroku](https://addons.heroku.com/openredis))
+* RedisCloud ([Heroku](https://addons.heroku.com/rediscloud))
 * RedisGreen ([Heroku](https://addons.heroku.com/redisgreen))
 
 ```ruby
