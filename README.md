@@ -17,12 +17,13 @@ POSTMARK_API_KEY="bcca0a78abbaed6533f3c8017b804bda"
 Then envconfig's SMTP configuration will look like this:
 
 ```ruby
-Envconfig.load(ENV).smtp.to_h # =>
+Envconfig.load.smtp.to_h # =>
 {
-  "address" => "smtp.example.org",
-  "port" => 25,
-  "username" => "bcca0a78abbaed6533f3c8017b804bda",
-  "password" => "bcca0a78abbaed6533f3c8017b804bda",
+  port: "25",
+  authentication: :plain,
+  address: "smtp.example.org",
+  user_name: "bcca0a78abbaed6533f3c8017b804bda",
+  password: "bcca0a78abbaed6533f3c8017b804bda"
 }
 ```
 
@@ -41,7 +42,12 @@ or `gem install envconfig`.
 Add `envconfig-rails` to your `Gemfile` and go.
 
 If you're not using Rails, add the base `envconfig` gem, and access the
-normalized configuration directly.
+configuration like this:
+
+```ruby
+Envconfig.load.smtp[:address]  => "example.org"
+Envconfig.load.smtp.to_h  # => {address: "example.org", ...}
+```
 
 
 ## Supported Add-ons
