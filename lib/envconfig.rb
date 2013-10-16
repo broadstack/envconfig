@@ -2,6 +2,7 @@ require "envconfig/service"
 require "envconfig/provider"
 
 require "envconfig/memcached"
+require "envconfig/redis"
 require "envconfig/smtp"
 
 require "envconfig/version"
@@ -24,6 +25,14 @@ module Envconfig
 
     def memcached?
       memcached.to_h.any?
+    end
+
+    def redis
+      @_redis ||= ::Envconfig::Redis.new(@env)
+    end
+
+    def redis?
+      redis.to_h.any?
     end
 
     def smtp

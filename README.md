@@ -95,6 +95,11 @@ Envconfig.load.memcached.to_h # =>
 ```
 
 
+### Redis
+
+(none yet)
+
+
 ## Contributing
 
 1. Fork it
