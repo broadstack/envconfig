@@ -1,6 +1,9 @@
-require "envconfig/provider"
 require "envconfig/service"
+require "envconfig/provider"
+
+require "envconfig/memcached"
 require "envconfig/smtp"
+
 require "envconfig/version"
 
 module Envconfig
@@ -13,6 +16,14 @@ module Envconfig
 
     def initialize(env)
       @env = env
+    end
+
+    def memcached
+      @_memcached ||= ::Envconfig::Memcached.new(@env)
+    end
+
+    def memcached?
+      memcached.to_h.any?
     end
 
     def smtp

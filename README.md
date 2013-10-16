@@ -59,6 +59,10 @@ Envconfig.load.smtp.to_h  # => {address: "example.org", ...}
 * SendGrid ([Heroku](https://addons.heroku.com/sendgrid))
 * Custom (`SMTP_HOST`, `SMTP_PORT`, `SMTP_USERNAME`, `SMTP_PASSWORD` in `ENV`)
 
+### memcached
+
+(none yet)
+
 
 ## Contributing
 
