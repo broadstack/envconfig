@@ -78,6 +78,22 @@ Envconfig.load.smtp.to_h # =>
 
 * MemCachier ([Broadstack](https://broadstack.com/addons/memcachier), [Heroku](https://addons.heroku.com/memcachier))
 
+memcached example:
+
+```ruby
+ENV["MEMCACHIER_SERVERS"] = "a.example.org:11211,b.example.com:11211"
+ENV["MEMCACHIER_USERNAME"] = "memcachieruser"
+ENV["MEMCACHIER_PASSWORD"] = SecureRandom.hex
+
+Envconfig.load.memcached.to_h # =>
+{
+  servers: "a.example.org:11211,b.example.com:11211",
+  username: "memcachieruser",
+  password: "9d1d72d6828ed59bab3d1496da71ba59",
+  server_strings: ["a.example.org:11211", "b.example.com:11211"]
+}
+```
+
 
 ## Contributing
 
