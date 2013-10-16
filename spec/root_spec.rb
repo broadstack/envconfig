@@ -8,6 +8,8 @@ describe Envconfig::Root do
   context "with nothing in ENV" do
 
     service_methods = [
+      :memcached,
+      :redis,
       :smtp,
     ]
 
