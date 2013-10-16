@@ -13,6 +13,7 @@ describe "redis configuration" do
     OPENREDIS_URL
     REDISCLOUD_URL
     REDISGREEN_URL
+    REDISTOGO_URL
   }.each do |env_key|
     it_behaves_like "redis configuration", env_key
   end

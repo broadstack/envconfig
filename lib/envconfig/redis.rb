@@ -10,6 +10,7 @@ module Envconfig
         Openredis,
         Rediscloud,
         Redisgreen,
+        Redistogo,
       ]
     end
 
@@ -44,6 +45,15 @@ module Envconfig
       def name; "RedisGreen" end
       def mapping
         {url: "REDISGREEN_URL"}
+      end
+    end
+
+    class Redistogo
+      include Provider
+      include ConfigFilter
+      def name; "Redis To Go" end
+      def mapping
+        {url: "REDISTOGO_URL"}
       end
     end
 
