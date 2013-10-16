@@ -5,7 +5,7 @@ module Envconfig
 
     def self.providers
       [
-        Custom,
+        Generic,
         Mailgun,
         Mandrill,
         Postmark,
@@ -14,7 +14,7 @@ module Envconfig
     end
 
     # A custom configuration, for local or self-managed SMTP servers.
-    class Custom
+    class Generic
       include Provider
       def valid?
         mapping.values.any? { |k| env.key?(k) } #any? instead of #all?
