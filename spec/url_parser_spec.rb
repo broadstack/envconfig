@@ -3,7 +3,7 @@ require "spec_helper"
 module Envconfig
   describe UrlParser do
 
-    let(:url) { "scheme://user:pass@a.example.org:1234" }
+    let(:url) { "mysql://john:pass@a.example.org:1234" }
     subject(:parser) { UrlParser.new(url) }
 
     describe "#extract" do
@@ -12,6 +12,21 @@ module Envconfig
           password: "pass",
           host: "a.example.org",
           port: 1234
+        )
+      end
+    end
+
+    describe "#extract_as" do
+      it "returns hash with renamed keys" do
+        result = parser.extract_as(
+          adapter: :scheme,
+          username: :user,
+          port: :port,
+        )
+        expect(result).to eq(
+          adapter: "mysql",
+          username: "john",
+          port: 1234,
         )
       end
     end
