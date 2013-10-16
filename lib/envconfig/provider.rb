@@ -42,7 +42,12 @@ module Envconfig
 
     # The configuration derived from the environment for this provider.
     def config
-      static.merge(dynamic)
+      filter_config(static.merge(dynamic))
+    end
+
+    # A hook for arbitrary changes to the config hash.
+    def filter_config(config)
+      config
     end
 
     private
