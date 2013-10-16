@@ -54,7 +54,27 @@ Envconfig.load.smtp.to_h  # => {address: "example.org", ...}
 
 ### Database
 
-(none yet)
+* Generic (`DATABASE_URL` in `ENV`)
+
+Database example:
+
+```ruby
+ENV["DATABASE_URL"] = "postgres://ab:secret@example.org:1234/db?encoding=utf-8"
+
+Envconfig.load.database.to_h # =>
+{
+  url: "postgres://ab:secret@example.org:1234/db?encoding=utf-8",
+  adapter: "postgresql",
+  database: "db",
+  username: "ab",
+  password: "secret",
+  host: "example.org",
+  port: 1234,
+  encoding: "utf-8"
+}
+
+
+```
 
 
 ### SMTP
