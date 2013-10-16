@@ -2,6 +2,7 @@ require "envconfig/service"
 require "envconfig/provider"
 require "envconfig/url_parser"
 
+require "envconfig/database"
 require "envconfig/memcached"
 require "envconfig/redis"
 require "envconfig/smtp"
@@ -18,6 +19,14 @@ module Envconfig
 
     def initialize(env)
       @env = env
+    end
+
+    def database
+      @_database ||= ::Envconfig::Database.new(@env)
+    end
+
+    def database?
+      database.to_h.any?
     end
 
     def memcached

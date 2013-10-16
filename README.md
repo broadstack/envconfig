@@ -52,6 +52,11 @@ Envconfig.load.smtp.to_h  # => {address: "example.org", ...}
 
 ## Supported Add-ons
 
+### Database
+
+(none yet)
+
+
 ### SMTP
 
 * Postmark ([Broadstack](https://broadstack.com/addons/postmark), [Heroku](https://addons.heroku.com/postmark))
