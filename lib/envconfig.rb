@@ -26,7 +26,7 @@ module Envconfig
     end
 
     def database?
-      database.to_h.any?
+      predicate_for(:database)
     end
 
     def memcached
@@ -34,7 +34,7 @@ module Envconfig
     end
 
     def memcached?
-      memcached.to_h.any?
+      predicate_for(:memcached)
     end
 
     def redis
@@ -42,7 +42,7 @@ module Envconfig
     end
 
     def redis?
-      redis.to_h.any?
+      predicate_for(:redis)
     end
 
     def smtp
@@ -50,7 +50,13 @@ module Envconfig
     end
 
     def smtp?
-      smtp.to_h.any?
+      predicate_for(:smtp)
+    end
+
+    private
+
+    def predicate_for(name)
+      public_send(name).to_h.any?
     end
 
   end
