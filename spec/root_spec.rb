@@ -3,7 +3,7 @@ require "spec_helper"
 describe Envconfig::Root do
 
   let(:env) { {} }
-  subject(:root) { Envconfig.load(env) }
+  subject(:root) { Envconfig::Root.new(env) }
 
   context "with nothing in ENV" do
 
