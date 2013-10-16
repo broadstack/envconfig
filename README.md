@@ -59,6 +59,21 @@ Envconfig.load.smtp.to_h  # => {address: "example.org", ...}
 * SendGrid ([Heroku](https://addons.heroku.com/sendgrid))
 * Custom (`SMTP_HOST`, `SMTP_PORT`, `SMTP_USERNAME`, `SMTP_PASSWORD` in `ENV`)
 
+SMTP example:
+
+```ruby
+ENV["MANDRILL_USERNAME"] = "mandrilluser"
+ENV["MANDRILL_APIKEY"] = SecureRandom.hex
+
+Envconfig.load.smtp.to_h # =>
+{
+  address: "smtp.mandrillapp.com",
+  port: "587",
+  user_name: "mandrilluser",
+  password: "14941007dfdc2af76e2fafe1383cf33b"
+}
+```
+
 ### memcached
 
 * MemCachier ([Broadstack](https://broadstack.com/addons/memcachier), [Heroku](https://addons.heroku.com/memcachier))
