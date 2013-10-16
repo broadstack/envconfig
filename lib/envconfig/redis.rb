@@ -8,6 +8,7 @@ module Envconfig
     def self.providers
       [
         Openredis,
+        Redisgreen,
       ]
     end
 
@@ -24,6 +25,15 @@ module Envconfig
       def name; "openredis" end
       def mapping
         {url: "OPENREDIS_URL"}
+      end
+    end
+
+    class Redisgreen
+      include Provider
+      include ConfigFilter
+      def name; "RedisGreen" end
+      def mapping
+        {url: "REDISGREEN_URL"}
       end
     end
 

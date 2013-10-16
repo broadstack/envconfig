@@ -98,6 +98,7 @@ Envconfig.load.memcached.to_h # =>
 ### Redis
 
 * openredis ([Heroku](https://addons.heroku.com/openredis))
+* RedisGreen ([Heroku](https://addons.heroku.com/redisgreen))
 
 ```ruby
 ENV["OPENREDIS_URL"] = "redis://:secrettoken@127.0.0.1:6379"
