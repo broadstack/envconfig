@@ -15,3 +15,23 @@ shared_examples "empty configuration" do
   end
 
 end
+
+shared_examples "redis configuration" do |env_key|
+  context "with openredis in ENV" do
+    before do
+      env[env_key] = "redis://:secrettoken@127.0.0.1:1234"
+    end
+
+    {
+      url: "redis://:secrettoken@127.0.0.1:1234",
+      host: "127.0.0.1",
+      port: 1234,
+      user: "",
+      password: "secrettoken",
+    }.each do |key, value|
+      it "sets :#{key} to #{value.inspect}" do
+        expect(config[key]).to eq(value)
+      end
+    end
+  end
+end
