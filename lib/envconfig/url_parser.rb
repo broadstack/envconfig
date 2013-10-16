@@ -1,4 +1,5 @@
 require "uri"
+require "cgi"
 
 module Envconfig
   class UrlParser
@@ -21,6 +22,13 @@ module Envconfig
     def extract_as(mapping)
       mapping.inject({}) do |hash, (key, method)|
         hash.merge!(key => extract_value(method))
+      end
+    end
+
+    # Query string as hash with symbol keys.
+    def query_values
+      CGI.parse(parsed_url.query || "").inject({}) do |hash, (key, values)|
+        hash.merge!(key.to_sym => values.first)
       end
     end
 
