@@ -20,7 +20,7 @@ module Envconfig
     # are public instance methods on URI.
     def extract_as(mapping)
       mapping.inject({}) do |hash, (key, method)|
-        hash.merge!(key => parsed_url.public_send(method))
+        hash.merge!(key => extract_value(method))
       end
     end
 
@@ -28,6 +28,14 @@ module Envconfig
 
     def parsed_url
       @_parsed_url ||= URI.parse(@url)
+    end
+
+    def extract_value(method)
+      if method.respond_to?(:call)
+        method.call(parsed_url)
+      else
+        parsed_url.public_send(method)
+      end
     end
 
   end

@@ -3,7 +3,7 @@ require "spec_helper"
 module Envconfig
   describe UrlParser do
 
-    let(:url) { "mysql://john:pass@a.example.org:1234" }
+    let(:url) { "postgres://john:pass@a.example.org:1234" }
     subject(:parser) { UrlParser.new(url) }
 
     describe "#extract" do
@@ -19,12 +19,12 @@ module Envconfig
     describe "#extract_as" do
       it "returns hash with renamed keys" do
         result = parser.extract_as(
-          adapter: :scheme,
+          adapter: ->(u){ u.scheme.sub(/\Apostgres\z/, "postgresql") },
           username: :user,
           port: :port,
         )
         expect(result).to eq(
-          adapter: "mysql",
+          adapter: "postgresql",
           username: "john",
           port: 1234,
         )
