@@ -4,6 +4,7 @@ require "envconfig/url_parser"
 
 require "envconfig/database"
 require "envconfig/memcached"
+require "envconfig/mongodb"
 require "envconfig/redis"
 require "envconfig/smtp"
 
@@ -26,6 +27,7 @@ module Envconfig
       [
         :database,
         :memcached,
+        :mongodb,
         :redis,
         :smtp,
       ].inject({}) do |hash, service|
@@ -47,6 +49,14 @@ module Envconfig
 
     def memcached?
       predicate_for(:memcached)
+    end
+
+    def mongodb
+      service_for(:mongodb, Mongodb)
+    end
+
+    def mongodb?
+      predicate_for(:mongodb)
     end
 
     def redis

@@ -121,6 +121,19 @@ Envconfig.load.memcached.to_h # =>
 ```
 
 
+### MongoDB
+
+(none yet)
+
+MongoDB example:
+
+```ruby
+Envconfig.load.mongodb.to_h # =>
+{
+}
+```
+
+
 ### Redis
 
 * openredis ([Heroku](https://addons.heroku.com/openredis))

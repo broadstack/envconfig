@@ -10,6 +10,7 @@ describe Envconfig::Root do
     service_methods = [
       :database,
       :memcached,
+      :mongodb,
       :redis,
       :smtp,
     ]
@@ -43,6 +44,7 @@ describe Envconfig::Root do
         expect(root.to_h).to eq(
           database: {},
           memcached: {},
+          mongodb: {},
           redis: {},
           smtp: {},
         )
@@ -99,6 +101,8 @@ describe Envconfig::Root do
           username: "mcuser",
           password: "mcpass",
           server_strings: ["mc.example.org:11211"]
+        },
+        mongodb: {
         },
         redis: {
           url: "redis://:orpass@or.example.org:2345",
