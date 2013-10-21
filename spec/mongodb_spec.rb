@@ -11,6 +11,7 @@ describe "MongoDB configuration" do
 
   %w{
     MONGOHQ_URL
+    MONGOLAB_URI
   }.each do |env_key|
     it_behaves_like "mongodb configuration", env_key
   end

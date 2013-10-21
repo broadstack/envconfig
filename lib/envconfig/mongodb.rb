@@ -6,6 +6,7 @@ module Envconfig
     def self.providers
       [
         Mongohq,
+        Mongolab,
       ]
     end
 
@@ -28,6 +29,14 @@ module Envconfig
       include ConfigFilter
       def mapping
         {url: "MONGOHQ_URL"}
+      end
+    end
+
+    class Mongolab
+      include Provider
+      include ConfigFilter
+      def mapping
+        {url: "MONGOLAB_URI"}
       end
     end
 

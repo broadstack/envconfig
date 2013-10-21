@@ -124,6 +124,7 @@ Envconfig.load.memcached.to_h # =>
 ### MongoDB
 
 * MongoHQ ([Broadstack](https://broadstack.com/addons/mongohq), [Heroku](https://addons.heroku.com/mongohq))
+* MongoLab ([Heroku](https://addons.heroku.com/mongolab))
 
 MongoDB example:
 
