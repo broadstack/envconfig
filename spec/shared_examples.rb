@@ -35,3 +35,26 @@ shared_examples "redis configuration" do |env_key|
     end
   end
 end
+
+shared_examples "mongodb configuration" do |env_key|
+  context "with #{env_key} in ENV" do
+    before do
+      env[env_key] = "mongodb://user:pass@example.org:2468/db?a=b&c=d"
+    end
+
+    {
+      url: "mongodb://user:pass@example.org:2468/db?a=b&c=d",
+      database: "db",
+      username: "user",
+      password: "pass",
+      host: "example.org",
+      port: 2468,
+      a: "b",
+      c: "d",
+    }.each do |key, value|
+      it "sets :#{key} to #{value.inspect}" do
+        expect(config[key]).to eq(value)
+      end
+    end
+  end
+end
