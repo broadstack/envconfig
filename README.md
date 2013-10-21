@@ -123,13 +123,21 @@ Envconfig.load.memcached.to_h # =>
 
 ### MongoDB
 
-(none yet)
+* MongoHQ ([Broadstack](https://broadstack.com/addons/mongohq), [Heroku](https://addons.heroku.com/mongohq))
 
 MongoDB example:
 
 ```ruby
+ENV["MONGOHQ_URL"] = "mongodb://user:pass@mhq.example.org:2468/stack618"
+
 Envconfig.load.mongodb.to_h # =>
 {
+  url: "mongodb://user:secret@mhq.example.org:2468/stack618",
+  username: "user",
+  password: "secret",
+  host: "mhq.example.org",
+  port: 2468,
+  database: "stack618"
 }
 ```
 
