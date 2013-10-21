@@ -17,7 +17,7 @@ shared_examples "empty configuration" do
 end
 
 shared_examples "redis configuration" do |env_key|
-  context "with openredis in ENV" do
+  context "with #{env_key} in ENV" do
     before do
       env[env_key] = "redis://:secrettoken@127.0.0.1:1234"
     end
