@@ -9,11 +9,7 @@ module Envconfig
       ]
     end
 
-    class Mongohq
-      include Provider
-      def mapping
-        {url: "MONGOHQ_URL"}
-      end
+    module ConfigFilter
       def filter_config(config)
         url = UrlParser.new(config[:url])
         parts = url.extract_as(
@@ -24,6 +20,14 @@ module Envconfig
           port: :port,
         )
         config.merge!(parts).merge!(url.query_values)
+      end
+    end
+
+    class Mongohq
+      include Provider
+      include ConfigFilter
+      def mapping
+        {url: "MONGOHQ_URL"}
       end
     end
 
