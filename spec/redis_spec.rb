@@ -10,6 +10,7 @@ describe "redis configuration" do
   end
 
   %w{
+    REDIS_URL
     OPENREDIS_URL
     REDISCLOUD_URL
     REDISGREEN_URL
