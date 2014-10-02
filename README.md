@@ -183,6 +183,7 @@ Envconfig.load.mongodb.to_h # =>
 
 ### Redis
 
+* Generic (`REDIS_URL` in `ENV`)
 * openredis ([Heroku](https://addons.heroku.com/openredis))
 * RedisCloud ([Heroku](https://addons.heroku.com/rediscloud))
 * RedisGreen ([Heroku](https://addons.heroku.com/redisgreen))

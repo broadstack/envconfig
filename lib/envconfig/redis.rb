@@ -7,6 +7,7 @@ module Envconfig
 
     def self.providers
       [
+        Generic,
         Openredis,
         Rediscloud,
         Redisgreen,
@@ -18,6 +19,15 @@ module Envconfig
       def filter_config(config)
         url = UrlParser.new(config[:url])
         config.merge!(url.extract(:host, :port, :user, :password))
+      end
+    end
+
+    class Generic
+      include Provider
+      include ConfigFilter
+      def name; "genericredis" end
+      def mapping
+        {url: "REDIS_URL"}
       end
     end
 
